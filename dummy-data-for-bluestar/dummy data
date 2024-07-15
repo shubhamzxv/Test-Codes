@@ -1,0 +1,349 @@
+INSERT INTO Thing (id, type, flash_mb, f_ver, f_lib_ver, model_id, user_config, m_config, activation_ts, created, deleted, idu_ver, odu_ver, f_upd_ver, idu_upd_ver, odu_upd_ver)
+VALUES
+    ('112233445566', 1, 256, '1.0', '0', 'Model3', '{"thingImageUrl": "/images/model3.jpg"}', '{"ps": 300}', '2024-07-12 12:00:00', NOW(), false, 'v1', 'v1', 'v1', 'v1', 'v1'),
+    ('334455667788', 2, 512, '2.0', '0', 'Model4', '{"thingImageUrl": "/images/model4.jpg"}', '{"ps": 400}', '2024-07-12 13:00:00', NOW(), false, 'v2', 'v2', 'v2', 'v2', 'v2'),
+    ('556677889900', 1, 512, '1.5', '0', 'Model5', '{"thingImageUrl": "/images/model5.jpg"}', '{"ps": 350}', '2024-07-12 14:00:00', NOW(), false, 'v1.5', 'v1.5', 'v1.5', 'v1.5', 'v1.5'),
+    ('778899001122', 2, 1024, '3.0', '0', 'Model6', '{"thingImageUrl": "/images/model6.jpg"}', '{"ps": 500}', '2024-07-12 15:00:00', NOW(), false, 'v3', 'v3', 'v3', 'v3', 'v3'),
+    ('990011223344', 1, 1024, '2.5', '0', 'Model7', '{"thingImageUrl": "/images/model7.jpg"}', '{"ps": 450}', '2024-07-12 16:00:00', NOW(), false, 'v2.5', 'v2.5', 'v2.5', 'v2.5', 'v2.5'),
+    ('AA1122334455', 2, 512, '1.8', '0', 'Model8', '{"thingImageUrl": "/images/model8.jpg"}', '{"ps": 400}', '2024-07-12 17:00:00', NOW(), false, 'v1.8', 'v1.8', 'v1.8', 'v1.8', 'v1.8'),
+    ('BB2233445566', 1, 256, '1.2', '0', 'Model9', '{"thingImageUrl": "/images/model9.jpg"}', '{"ps": 320}', '2024-07-12 18:00:00', NOW(), false, 'v1.2', 'v1.2', 'v1.2', 'v1.2', 'v1.2'),
+    ('CC3344556677', 2, 1024, '3.5', '0', 'Model10', '{"thingImageUrl": "/images/model10.jpg"}', '{"ps": 550}', '2024-07-12 19:00:00', NOW(), false, 'v3.5', 'v3.5', 'v3.5', 'v3.5', 'v3.5'),
+    ('DD4455667788', 1, 512, '2.2', '0', 'Model11', '{"thingImageUrl": "/images/model11.jpg"}', '{"ps": 400}', '2024-07-12 20:00:00', NOW(), false, 'v2.2', 'v2.2', 'v2.2', 'v2.2', 'v2.2'),
+    ('EE5566778899', 2, 256, '1.3', '0', 'Model12', '{"thingImageUrl": "/images/model12.jpg"}', '{"ps": 350}', '2024-07-12 21:00:00', NOW(), false, 'v1.3', 'v1.3', 'v1.3', 'v1.3', 'v1.3'),
+    ('FF6677889900', 1, 512, '1.5', '0', 'Model13', '{"thingImageUrl": "/images/model13.jpg"}', '{"ps": 370}', '2024-07-13 12:00:00', NOW(), false, 'v1.5', 'v1.5', 'v1.5', 'v1.5', 'v1.5'),
+    ('GG7788990011', 2, 1024, '3.2', '0', 'Model14', '{"thingImageUrl": "/images/model14.jpg"}', '{"ps": 480}', '2024-07-13 13:00:00', NOW(), false, 'v3.2', 'v3.2', 'v3.2', 'v3.2', 'v3.2'),
+    ('HH9900112233', 1, 256, '1.2', '0', 'Model15', '{"thingImageUrl": "/images/model15.jpg"}', '{"ps": 310}', '2024-07-13 14:00:00', NOW(), false, 'v1.2', 'v1.2', 'v1.2', 'v1.2', 'v1.2'),
+    ('II1122334455', 2, 512, '2.0', '0', 'Model16', '{"thingImageUrl": "/images/model16.jpg"}', '{"ps": 400}', '2024-07-13 15:00:00', NOW(), false, 'v2.0', 'v2.0', 'v2.0', 'v2.0', 'v2.0'),
+    ('JJ3344556677', 1, 1024, '3.5', '0', 'Model17', '{"thingImageUrl": "/images/model17.jpg"}', '{"ps": 550}', '2024-07-13 16:00:00', NOW(), false, 'v3.5', 'v3.5', 'v3.5', 'v3.5', 'v3.5'),
+    ('KK5566778899', 2, 512, '2.2', '0', 'Model18', '{"thingImageUrl": "/images/model18.jpg"}', '{"ps": 420}', '2024-07-13 17:00:00', NOW(), false, 'v2.2', 'v2.2', 'v2.2', 'v2.2', 'v2.2'),
+    ('LL7788990011', 1, 256, '1.0', '0', 'Model19', '{"thingImageUrl": "/images/model19.jpg"}', '{"ps": 300}', '2024-07-13 18:00:00', NOW(), false, 'v1.0', 'v1.0', 'v1.0', 'v1.0', 'v1.0'),
+    ('MM9900112233', 2, 512, '2.5', '0', 'Model20', '{"thingImageUrl": "/images/model20.jpg"}', '{"ps": 450}', '2024-07-13 19:00:00', NOW(), false, 'v2.5', 'v2.5', 'v2.5', 'v2.5', 'v2.5'),
+    ('NN1122334455', 1, 512, '2.8', '0', 'Model21', '{"thingImageUrl": "/images/model21.jpg"}', '{"ps": 480}', '2024-07-13 20:00:00', NOW(), false, 'v2.8', 'v2.8', 'v2.8', 'v2.8', 'v2.8'),
+    ('OO3344556677', 2, 1024, '3.0', '0', 'Model22', '{"thingImageUrl": "/images/model22.jpg"}', '{"ps": 500}', '2024-07-13 21:00:00', NOW(), false, 'v3.0', 'v3.0', 'v3.0', 'v3.0', 'v3.0');
+
+
+INSERT INTO ThingState (thing_id, conn_state, conn_ts, state, state_ts)
+VALUES
+    ('112233445566', '{"status": "connected"}', '2024-07-12 12:05:00', '{"temperature": 28}', '2024-07-12 12:05:00'),
+    ('334455667788', '{"status": "disconnected"}', '2024-07-12 13:05:00', '{"temperature": 32}', '2024-07-12 13:05:00'),
+    ('556677889900', '{"status": "connected"}', '2024-07-12 14:05:00', '{"temperature": 27}', '2024-07-12 14:05:00'),
+    ('778899001122', '{"status": "connected"}', '2024-07-12 15:05:00', '{"temperature": 29}', '2024-07-12 15:05:00'),
+    ('990011223344', '{"status": "disconnected"}', '2024-07-12 16:05:00', '{"temperature": 30}', '2024-07-12 16:05:00'),
+    ('AA1122334455', '{"status": "connected"}', '2024-07-12 17:05:00', '{"temperature": 26}', '2024-07-12 17:05:00'),
+    ('BB2233445566', '{"status": "connected"}', '2024-07-12 18:05:00', '{"temperature": 25}', '2024-07-12 18:05:00'),
+    ('CC3344556677', '{"status": "disconnected"}', '2024-07-12 19:05:00', '{"temperature": 31}', '2024-07-12 19:05:00'),
+    ('DD4455667788', '{"status": "connected"}', '2024-07-12 20:05:00', '{"temperature": 28}', '2024-07-12 20:05:00'),
+    ('EE5566778899', '{"status": "connected"}', '2024-07-12 21:05:00', '{"temperature": 27}', '2024-07-12 21:05:00'),
+    ('FF6677889900', '{"status": "connected"}', '2024-07-13 12:05:00', '{"temperature": 27}', '2024-07-13 12:05:00'),
+    ('GG7788990011', '{"status": "disconnected"}', '2024-07-13 13:05:00', '{"temperature": 31}', '2024-07-13 13:05:00'),
+    ('HH9900112233', '{"status": "connected"}', '2024-07-13 14:05:00', '{"temperature": 28}', '2024-07-13 14:05:00'),
+    ('II1122334455', '{"status": "connected"}', '2024-07-13 15:05:00', '{"temperature": 29}', '2024-07-13 15:05:00'),
+    ('JJ3344556677', '{"status": "disconnected"}', '2024-07-13 16:05:00', '{"temperature": 32}', '2024-07-13 16:05:00'),
+    ('KK5566778899', '{"status": "connected"}', '2024-07-13 17:05:00', '{"temperature": 26}', '2024-07-13 17:05:00'),
+    ('LL7788990011', '{"status": "connected"}', '2024-07-13 18:05:00', '{"temperature": 25}', '2024-07-13 18:05:00'),
+    ('MM9900112233', '{"status": "disconnected"}', '2024-07-13 19:05:00', '{"temperature": 30}', '2024-07-13 19:05:00'),
+    ('NN1122334455', '{"status": "connected"}', '2024-07-13 20:05:00', '{"temperature": 27}', '2024-07-13 20:05:00'),
+    ('OO3344556677', '{"status": "connected"}', '2024-07-13 21:05:00', '{"temperature": 28}', '2024-07-13 21:05:00');
+
+
+
+INSERT INTO ACModel (id, product_id, category, star, capacity, model_code, idu_fw_code, idu_ee_code, odu_fw_code, odu_ee_code, min_temp, max_temp, display_digit, displayunit, remote_type, fix_and_lock, wifi_support, mode, turbo, fspd, duo, vswing, hswing, air_quality, display, scheduler, sleep, custom_sleep, on_lock, off_lock, stemp_lock, mode_lock, fspd_lock, rttl, rtul, climate, budget, trend, irest, health, esave, ifeel, eco, high_cap, critical_error, non_critical_error, raise_ticket, raise_ticket_on, make, exv, valve4, m_buz, bluscore, created)
+VALUES
+    ('ACM003', 'PID003', 'Portable AC', 5, 14000, '{"MVC004", "MVC005"}', 'FW005', 'EE005', 'FW006', 'EE006', 18, 32, 3, false, 'WiFi', '{"1": 1.8}', 1, '{"cool": true}', '{"boost": true}', '{"low": true}', false, '{"swing": true}', '{"swing": true}', true, true, '{"10:00", "22:00"}', true, false, '{"on": true}', '{"off": true}', '{"stemp": true}', '{"mode": true}', '{"fspd": true}', '{"rttl": true}', '{"rtul": true}', '{"cool": true}', false, true, '{"irest": true}', '{"health": true}', '{"esave": true}', '{"ifeel": true}', '{"eco": true}', true, '{"error5": true}', '{"error6": true}', false, 0, 1, false, false, '{"sound": true}', false, NOW()),
+    ('ACM004', 'PID004', 'Central AC', 4, 30000, '{"MVC006"}', 'FW007', 'EE007', 'FW008', 'EE008', 15, 28, 2, true, 'IR Remote', '{"2": 2.0}', 0, '{"cool": true}', '{"boost": false}', '{"high": true}', true, '{"swing": false}', '{"swing": false}', false, false, '{"11:00", "23:00"}', true, true, '{"on": false}', '{"off": false}', '{"stemp": false}', '{"mode": false}', '{"fspd": false}', '{"rttl": false}', '{"rtul": false}', '{"cool": false}', true, false, '{"irest": false}', '{"health": false}', '{"esave": false}', '{"ifeel": false}', '{"eco": false}', true, '{"error7": false}', '{"error8": false}', true, 1, 1, true, true, '{"buzz": false}', true, NOW()),
+    ('ACM005', 'PID005', 'Window AC', 4, 18000, '{"MVC007"}', 'FW009', 'EE009', 'FW010', 'EE010', 17, 33, 3, false, 'WiFi', '{"2": 2.0}', 1, '{"cool": true}', '{"boost": true}', '{"medium": true}', false, '{"swing": true}', '{"swing": true}', true, true, '{"09:00", "21:00"}', true, false, '{"on": true}', '{"off": true}', '{"stemp": true}', '{"mode": true}', '{"fspd": true}', '{"rttl": true}', '{"rtul": true}', '{"cool": true}', false, true, '{"irest": true}', '{"health": true}', '{"esave": true}', '{"ifeel": true}', '{"eco": true}', true, '{"error9": true}', '{"error10": true}', false, 0, 1, false, false, '{"sound": true}', false, NOW()),
+    ('ACM006', 'PID006', 'Split AC', 5, 24000, '{"MVC008", "MVC009"}', 'FW011', 'EE011', 'FW012', 'EE012', 16, 30, 2, true, 'IR Remote', '{"1": 1.8}', 0, '{"cool": true}', '{"boost": false}', '{"high": true}', true, '{"swing": false}', '{"swing": false}', false, true, '{"08:00", "20:00"}', true, true, '{"on": false}', '{"off": false}', '{"stemp": false}', '{"mode": false}', '{"fspd": false}', '{"rttl": false}', '{"rtul": false}', '{"cool": false}', true, false, '{"irest": false}', '{"health": false}', '{"esave": false}', '{"ifeel": false}', '{"eco": false}', true, '{"error11": false}', '{"error12": false}', true, 1, 1, true, true, '{"buzz": false}', true, NOW()),
+    ('ACM007', 'PID007', 'Portable AC', 4, 15000, '{"MVC010"}', 'FW013', 'EE013', 'FW014', 'EE014', 18, 32, 2, true, 'None', '{"1": 1.5}', 1, '{"cool": false}', '{"boost": true}', '{"low": true}', false, '{"swing": true}', '{"swing": true}', true, false, '{"10:00", "22:00"}', false, true, '{"on": true}', '{"off": true}', '{"stemp": true}', '{"mode": true}', '{"fspd": true}', '{"rttl": true}', '{"rtul": true}', '{"cool": true}', false, true, '{"irest": true}', '{"health": true}', '{"esave": true}', '{"ifeel": true}', '{"eco": true}', true, '{"error13": true}', '{"error14": true}', false, 0, 1, false, false, '{"sound": true}', false, NOW()),
+    ('ACM008', 'PID008', 'Central AC', 3, 20000, '{"MVC011"}', 'FW015', 'EE015', 'FW016', 'EE016', 15, 28, 2, true, 'Wi-Fi', '{"2": 2.2}', 0, '{"cool": true}', '{"boost": false}', '{"medium": true}', true, '{"swing": false}', '{"swing": false}', false, true, '{"09:30", "21:30"}', true, false, '{"on": false}', '{"off": false}', '{"stemp": false}', '{"mode": false}', '{"fspd": false}', '{"rttl": false}', '{"rtul": false}', '{"cool": false}', true, false, '{"irest": false}', '{"health": false}', '{"esave": false}', '{"ifeel": false}', '{"eco": false}', true, '{"error15": false}', '{"error16": false}', true, 1, 1, true, true, '{"buzz": false}', true, NOW()),
+    ('ACM009', 'PID009', 'Ductless AC', 5, 18000, '{"MVC012", "MVC013"}', 'FW017', 'EE017', 'FW018', 'EE018', 16, 32, 3, false, 'Bluetooth', '{"3": 3.0}', 1, '{"cool": true}', '{"boost": true}', '{"high": true}', false, '{"swing": true}', '{"swing": true}', true, true, '{"07:00", "19:00"}', true, true, '{"on": true}', '{"off": true}', '{"stemp": true}', '{"mode": true}', '{"fspd": true}', '{"rttl": true}', '{"rtul": true}', '{"cool": true}', false, true, '{"irest": true}', '{"health": true}', '{"esave": true}', '{"ifeel": true}', '{"eco": true}', true, '{"error17": true}', '{"error18": true}', false, 0, 1, false, false, '{"sound": true}', false, NOW()),
+    ('ACM010', 'PID010', 'Smart AC', 4, 21000, '{"MVC014"}', 'FW019', 'EE019', 'FW020', 'EE020', 17, 31, 2, true, 'Infrared', '{"1": 1.7}', 0, '{"cool": true}', '{"boost": false}', '{"medium": true}', true, '{"swing": false}', '{"swing": false}', false, true, '{"08:30", "20:30"}', false, false, '{"on": false}', '{"off": false}', '{"stemp": false}', '{"mode": false}', '{"fspd": false}', '{"rttl": false}', '{"rtul": false}', '{"cool": false}', true, false, '{"irest": false}', '{"health": false}', '{"esave": false}', '{"ifeel": false}', '{"eco": false}', true, '{"error19": false}', '{"error20": false}', true, 1, 1, true, true, '{"buzz": false}', true, NOW()),
+    ('ACM011', 'PID011', 'Window AC', 3, 19000, '{"MVC015"}', 'FW021', 'EE021', 'FW022', 'EE022', 16, 34, 3, false, 'None', '{"2": 2.5}', 1, '{"cool": false}', '{"boost": true}', '{"low": true}', true, '{"swing": true}', '{"swing": true}', true, false, '{"09:15", "21:15"}', true, true, '{"on": true}', '{"off": true}', '{"stemp": true}', '{"mode": true}', '{"fspd": true}', '{"rttl": true}', '{"rtul": true}', '{"cool": true}', false, true, '{"irest": true}', '{"health": true}', '{"esave": true}', '{"ifeel": true}', '{"eco": true}', true, '{"error21": true}', '{"error22": true}', false, 0, 1, false, false, '{"sound": true}', false, NOW()),
+    ('ACM012', 'PID012', 'Split AC', 4, 22000, '{"MVC016", "MVC017"}', 'FW023', 'EE023', 'FW024', 'EE024', 18, 30, 2, true, 'Wi-Fi', '{"3": 3.0}', 0, '{"cool": true}', '{"boost": false}', '{"medium": true}', false, '{"swing": false}', '{"swing": false}', false, true, '{"08:45", "20:45"}', true, false, '{"on": false}', '{"off": false}', '{"stemp": false}', '{"mode": false}', '{"fspd": false}', '{"rttl": false}', '{"rtul": false}', '{"cool": false}', true, false, '{"irest": false}', '{"health": false}', '{"esave": false}', '{"ifeel": false}', '{"eco": false}', true, '{"error23": false}', '{"error24": false}', true, 1, 1, true, true, '{"buzz": false}', true, NOW()),
+    ('ACM013', 'PID013', 'Portable AC', 5, 17000, '{"MVC018"}', 'FW025', 'EE025', 'FW026', 'EE026', 20, 30, 3, false, 'Bluetooth', '{"2": 2.2}', 1, '{"cool": false}', '{"boost": true}', '{"high": true}', true, '{"swing": true}', '{"swing": true}', false, false, '{"10:30", "22:30"}', false, true, '{"on": true}', '{"off": true}', '{"stemp": true}', '{"mode": true}', '{"fspd": true}', '{"rttl": true}', '{"rtul": true}', '{"cool": true}', false, true, '{"irest": true}', '{"health": true}', '{"esave": true}', '{"ifeel": true}', '{"eco": true}', true, '{"error25": true}', '{"error26": true}', false, 0, 1, false, false, '{"sound": true}', false, NOW()),
+    ('ACM014', 'PID014', 'Central AC', 3, 25000, '{"MVC019"}', 'FW027', 'EE027', 'FW028', 'EE028', 14, 29, 2, true, 'IR Remote', '{"1": 1.6}', 0, '{"cool": true}', '{"boost": false}', '{"low": true}', false, '{"swing": false}', '{"swing": false}', true, true, '{"07:30", "19:30"}', true, true, '{"on": true}', '{"off": true}', '{"stemp": true}', '{"mode": true}', '{"fspd": true}', '{"rttl": true}', '{"rtul": true}', '{"cool": true}', true, false, '{"irest": false}', '{"health": false}', '{"esave": false}', '{"ifeel": false}', '{"eco": false}', true, '{"error27": false}', '{"error28": false}', true, 1, 1, true, true, '{"buzz": false}', true, NOW()),
+    ('ACM015', 'PID015', 'Ductless AC', 4, 20000, '{"MVC020", "MVC021"}', 'FW029', 'EE029', 'FW030', 'EE030', 17, 31, 3, true, 'None', '{"3": 3.5}', 1, '{"cool": true}', '{"boost": true}', '{"medium": true}', true, '{"swing": false}', '{"swing": false}', false, false, '{"09:45", "21:45"}', false, false, '{"on": false}', '{"off": false}', '{"stemp": false}', '{"mode": false}', '{"fspd": false}', '{"rttl": false}', '{"rtul": false}', '{"cool": false}', false, false, '{"irest": false}', '{"health": false}', '{"esave": false}', '{"ifeel": false}', '{"eco": false}', true, '{"error29": false}', '{"error30": false}', false, 0, 1, false, false, '{"sound": true}', false, NOW());
+
+
+INSERT INTO UserThingMapping (thing_id, user_id, user_type, is_admin, created, deleted, installLocation)
+VALUES
+    ('112233445566', 'user003', 1, true, NOW(), false, POINT(40.7128, -74.0060)),
+    ('334455667788', 'user004', 0, false, NOW(), false, POINT(34.0522, -118.2437)),
+    ('556677889900', 'user005', 1, true, NOW(), false, POINT(51.5074, -0.1278)),
+    ('778899001122', 'user006', 0, false, NOW(), false, POINT(48.8566, 2.3522)),
+    ('990011223344', 'user007', 1, true, NOW(), false, POINT(35.6895, 139.6917)),
+    ('AA1122334455', 'user008', 0, false, NOW(), false, POINT(55.7558, 37.6176)),
+    ('BB2233445566', 'user009', 1, true, NOW(), false, POINT(22.5726, 88.3639)),
+    ('CC3344556677', 'user010', 0, false, NOW(), false, POINT(19.0760, 72.8777)),
+    ('DD4455667788', 'user011', 1, true, NOW(), false, POINT(40.7306, -73.9352)),
+    ('EE5566778899', 'user012', 0, false, NOW(), false, POINT(37.7749, -122.4194)),
+    ('FF6677889900', 'USR001', 1, true, NOW(), false, POINT(12.9716, 77.5946)),
+    ('GG7788990011', 'USR002', 0, false, NOW(), false, POINT(19.076, 72.8777)),
+    ('HH9900112233', 'USR003', 1, true, NOW(), false, POINT(28.7041, 77.1025)),
+    ('II1122334455', 'USR004', 0, false, NOW(), false, POINT(22.5726, 88.3639)),
+    ('JJ3344556677', 'USR005', 1, false, NOW(), false, POINT(13.0827, 80.2707)),
+    ('KK5566778899', 'USR006', 0, false, NOW(), false, POINT(25.5941, 85.1376)),
+    ('LL7788990011', 'USR007', 1, true, NOW(), false, POINT(12.9716, 77.5946)),
+    ('MM9900112233', 'USR008', 0, false, NOW(), false, POINT(19.076, 72.8777)),
+    ('NN1122334455', 'USR009', 1, true, NOW(), false, POINT(28.7041, 77.1025)),
+    ('OO3344556677', 'USR010', 0, false, NOW(), false, POINT(22.5726, 88.3639));
+
+
+
+INSERT INTO AppUser (id, name, password, countryCode, created, deleted)
+VALUES
+    ('user003', 'Alice Johnson', 'hashed_password', '91', NOW(), false),
+    ('user004', 'Bob Smith', 'hashed_password', '91', NOW(), false),
+    ('user005', 'Charlie Brown', 'hashed_password', '91', NOW(), false),
+    ('user006', 'David Lee', 'hashed_password', '91', NOW(), false),
+    ('user007', 'Emily Davis', 'hashed_password', '91', NOW(), false),
+    ('user008', 'Fiona Clark', 'hashed_password', '91', NOW(), false),
+    ('user009', 'George Martin', 'hashed_password', '91', NOW(), false),
+    ('user010', 'Hannah White', 'hashed_password', '91', NOW(), false),
+    ('user011', 'Ian Hall', 'hashed_password', '91', NOW(), false),
+    ('user012', 'Julia Wilson', 'hashed_password', '91', NOW(), false),
+    ('USR001', 'Alice', 'password123', '91', NOW(), false),
+    ('USR002', 'Bob', 'securepass', '91', NOW(), false),
+    ('USR003', 'Charlie', 'letmein', '91', NOW(), false),
+    ('USR004', 'David', 'password456', '91', NOW(), false),
+    ('USR005', 'Eve', 'strongpassword', '91', NOW(), false),
+    ('USR006', 'Frank', 'pa$$w0rd', '91', NOW(), false),
+    ('USR007', 'Grace', 'password789', '91', NOW(), false),
+    ('USR008', 'Helen', 'hello123', '91', NOW(), false),
+    ('USR009', 'Ian', 'qwerty', '91', NOW(), false),
+    ('USR010', 'Julia', 'abc123', '91', NOW(), false);
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+new dummy data
+CREATE TABLE IF NOT EXISTS AppUser(
+    id VARCHAR(50) PRIMARY KEY, -- uuid format
+    name VARCHAR(20) NOT NULL,
+    password VARCHAR(512), -- with salt (<salt$password>)
+    countryCode VARCHAR(3) NOT NULL DEFAULT '+91',
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    deleted BOOLEAN NOT NULL DEFAULT false,
+    config VARCHAR(10),
+    tuya_user_id VARCHAR(10)
+);
+
+CREATE TABLE IF NOT EXISTS Thing (  
+    id VARCHAR(20) PRIMARY KEY,  -- device mac address
+    serial_no INT NOT NULL,
+    type INT NOT NULL,
+    flash_mb INT NOT NULL,
+    f_ver VARCHAR(20) NOT NULL,
+    f_lib_ver VARCHAR(5) NOT NULL DEFAULT '0', -- base library version used by firmware
+    model_id VARCHAR(50) NOT NULL,
+    user_config JSONB DEFAULT '{}'::JSONB, -- {"thingImageUrl": ""} (user preferences related configuration)
+    m_config JSON DEFAULT '{"ps": 300}'::JSONB, -- internal operation preferences related configuration
+    activation_ts TIMESTAMP WITH TIME ZONE,
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    deleted BOOLEAN NOT NULL DEFAULT false,
+    idu_ver VARCHAR(20) NOT NULL,
+    odu_ver VARCHAR(20) NOT NULL,
+    f_upd_ver VARCHAR(20),
+    idu_upd_ver VARCHAR(20),
+    odu_upd_ver VARCHAR(20)
+);
+
+CREATE TABLE IF NOT EXISTS ThingState(
+    thing_id VARCHAR(20) NOT NULL,
+    conn_state JSON DEFAULT '{}'::JSONB,
+    conn_ts TIMESTAMP WITH TIME ZONE,
+    state JSON DEFAULT '{}'::JSONB,
+    state_ts TIMESTAMP WITH TIME ZONE,
+
+    PRIMARY KEY(thing_id),
+    CONSTRAINT fk_Thing FOREIGN KEY(thing_id) REFERENCES Thing(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS ACModel (
+    id VARCHAR(50) PRIMARY KEY, -- uuid format
+    product_id VARCHAR(100) NOT NULL,
+    remote_type VARCHAR(50) DEFAULT '' NOT NULL,
+    
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS UserThingMapping(
+    thing_id VARCHAR(20) NOT NULL,
+    user_id VARCHAR(50) NOT NULL,
+    user_type INT NOT NULL CONSTRAINT user_type_check CHECK(user_type IN (0,1)), -- 1 -> primary user, 0-> secondary_user
+    is_admin BOOLEAN DEFAULT false, -- admin access or normal access
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    deleted BOOLEAN DEFAULT false,
+    installLocation POINT, -- (lat,lon) captured at the time of onboarding
+
+    PRIMARY KEY(thing_id, user_id),
+
+    CONSTRAINT fk_Thing FOREIGN KEY (thing_id) REFERENCES Thing(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS AppUserAuth(
+    auth_id VARCHAR(50) PRIMARY KEY, -- format (phone -> phone-<country_code><number>, email-> email-<email>)
+    user_id VARCHAR(50) DEFAULT NULL, -- nullable
+    verified BOOLEAN NOT NULL DEFAULT false,
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    deleted BOOLEAN NOT NULL DEFAULT false,
+    verification_json JSON,
+
+    CONSTRAINT fk_AppUser FOREIGN KEY(user_id) REFERENCES AppUser(id) ON DELETE CASCADE
+);
+
+-- Create dummy data for AppUser
+INSERT INTO AppUser (id, name, password, countryCode, config, tuya_user_id) VALUES
+('user-1', 'Alice', 'salt$password1', '+91', 'config1', 'tuya1'),
+('user-2', 'Bob', 'salt$password2', '+91', 'config2', 'tuya2'),
+('user-3', 'Carol', 'salt$password3', '+91', 'config3', 'tuya3'),
+('user-4', 'Dave', 'salt$password4', '+91', 'config4', 'tuya4'),
+('user-5', 'Eve', 'salt$password5', '+91', 'config5', 'tuya5'),
+('user-6', 'Frank', 'salt$password6', '+91', 'config6', 'tuya6'),
+('user-7', 'Grace', 'salt$password7', '+91', 'config7', 'tuya7'),
+('user-8', 'Heidi', 'salt$password8', '+91', 'config8', 'tuya8'),
+('user-9', 'Ivan', 'salt$password9', '+91', 'config9', 'tuya9'),
+('user-10', 'Judy', 'salt$password10', '+91', 'config10', 'tuya10');
+
+-- Create dummy data for Thing
+INSERT INTO Thing (id, serial_no, type, flash_mb, f_ver, f_lib_ver, model_id, user_config, m_config, activation_ts, idu_ver, odu_ver, f_upd_ver, idu_upd_ver, odu_upd_ver) VALUES
+('thing-1', 1001, 0, 16, 'v1.0', '0', 'model1', '{"thingImageUrl": "url1"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu1', 'odu1', 'f_upd_ver1', 'idu_upd_ver1', 'odu_upd_ver1'),
+('thing-2', 1002, 1, 32, 'v1.1', '1', 'model2', '{"thingImageUrl": "url2"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu2', 'odu2', 'f_upd_ver2', 'idu_upd_ver2', 'odu_upd_ver2'),
+('thing-3', 1003, 2, 64, 'v1.2', '2', 'model3', '{"thingImageUrl": "url3"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu3', 'odu3', 'f_upd_ver3', 'idu_upd_ver3', 'odu_upd_ver3'),
+('thing-4', 1004, 0, 16, 'v1.3', '0', 'model4', '{"thingImageUrl": "url4"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu4', 'odu4', 'f_upd_ver4', 'idu_upd_ver4', 'odu_upd_ver4'),
+('thing-5', 1005, 1, 32, 'v1.4', '1', 'model5', '{"thingImageUrl": "url5"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu5', 'odu5', 'f_upd_ver5', 'idu_upd_ver5', 'odu_upd_ver5'),
+('thing-6', 1006, 2, 64, 'v1.5', '2', 'model6', '{"thingImageUrl": "url6"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu6', 'odu6', 'f_upd_ver6', 'idu_upd_ver6', 'odu_upd_ver6'),
+('thing-7', 1007, 0, 16, 'v1.6', '0', 'model7', '{"thingImageUrl": "url7"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu7', 'odu7', 'f_upd_ver7', 'idu_upd_ver7', 'odu_upd_ver7'),
+('thing-8', 1008, 1, 32, 'v1.7', '1', 'model8', '{"thingImageUrl": "url8"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu8', 'odu8', 'f_upd_ver8', 'idu_upd_ver8', 'odu_upd_ver8'),
+('thing-9', 1009, 2, 64, 'v1.8', '2', 'model9', '{"thingImageUrl": "url9"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu9', 'odu9', 'f_upd_ver9', 'idu_upd_ver9', 'odu_upd_ver9'),
+('thing-10', 1010, 0, 16, 'v1.9', '0', 'model10', '{"thingImageUrl": "url10"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu10', 'odu10', 'f_upd_ver10', 'idu_upd_ver10', 'odu_upd_ver10');
+
+-- Create dummy data for ThingState
+INSERT INTO ThingState (thing_id, conn_state, conn_ts, state, state_ts) VALUES
+('thing-1', '{"connected": true}', CURRENT_TIMESTAMP, '{"status": "active"}', CURRENT_TIMESTAMP),
+('thing-2', '{"connected": false}', CURRENT_TIMESTAMP, '{"status": "inactive"}', CURRENT_TIMESTAMP),
+('thing-3', '{"connected": true}', CURRENT_TIMESTAMP, '{"status": "active"}', CURRENT_TIMESTAMP),
+('thing-4', '{"connected": false}', CURRENT_TIMESTAMP, '{"status": "inactive"}', CURRENT_TIMESTAMP),
+('thing-5', '{"connected": true}', CURRENT_TIMESTAMP, '{"status": "active"}', CURRENT_TIMESTAMP),
+('thing-6', '{"connected": false}', CURRENT_TIMESTAMP, '{"status": "inactive"}', CURRENT_TIMESTAMP),
+('thing-7', '{"connected": true}', CURRENT_TIMESTAMP, '{"status": "active"}', CURRENT_TIMESTAMP),
+('thing-8', '{"connected": false}', CURRENT_TIMESTAMP, '{"status": "inactive"}', CURRENT_TIMESTAMP),
+('thing-9', '{"connected": true}', CURRENT_TIMESTAMP, '{"status": "active"}', CURRENT_TIMESTAMP),
+('thing-10', '{"connected": false}', CURRENT_TIMESTAMP, '{"status": "inactive"}', CURRENT_TIMESTAMP);
+
+-- Create dummy data for UserThingMapping
+INSERT INTO UserThingMapping (thing_id, user_id, user_type, is_admin, installLocation) VALUES
+('thing-1', 'user-1', 1, true, POINT(10.0, 20.0)),
+('thing-2', 'user-2', 0, false, POINT(11.0, 21.0)),
+('thing-3', 'user-3', 1, true, POINT(12.0, 22.0)),
+('thing-4', 'user-4', 0, false, POINT(13.0, 23.0)),
+('thing-5', 'user-5', 1, true, POINT(14.0, 24.0)),
+('thing-6', 'user-6', 0, false, POINT(15.0, 25.0)),
+('thing-7', 'user-7', 1, true, POINT(16.0, 26.0)),
+('thing-8', 'user-8', 0, false, POINT(17.0, 27.0)),
+('thing-9', 'user-9', 1, true, POINT(18.0, 28.0)),
+('thing-10', 'user-10', 0, false, POINT(19.0, 29.0));
+
+-- Create dummy data for AppUserAuth
+INSERT INTO AppUserAuth (auth_id, user_id, verified, verification_json) VALUES
+('phone-+911234567890', 'user-1', true, '{"method": "sms"}'),
+('phone-+911234567891', 'user-2', true, '{"method": "sms"}'),
+('phone-+911234567892', 'user-3', true, '{"method": "sms"}'),
+('phone-+911234567893', 'user-4', true, '{"method": "sms"}'),
+('phone-+911234567894', 'user-5', true, '{"method": "sms"}'),
+('phone-+911234567895', 'user-6', true, '{"method": "sms"}'),
+('phone-+911234567896', 'user-7', true, '{"method": "sms"}'),
+('phone-+911234567897', 'user-8', true, '{"method": "sms"}'),
+('phone-+911234567898', 'user-9', true, '{"method": "sms"}'),
+('phone-+911234567899', 'user-10', true, '{"method": "sms"}');
+
+same data
+-- Create more dummy data for AppUser
+INSERT INTO AppUser (id, name, password, countryCode, config, tuya_user_id) VALUES
+('user-11', 'Kyle', 'salt$password11', '+91', 'config11', 'tuya11'),
+('user-12', 'Laura', 'salt$password12', '+91', 'config12', 'tuya12'),
+('user-13', 'Mike', 'salt$password13', '+91', 'config13', 'tuya13'),
+('user-14', 'Nina', 'salt$password14', '+91', 'config14', 'tuya14'),
+('user-15', 'Oscar', 'salt$password15', '+91', 'config15', 'tuya15'),
+('user-16', 'Paul', 'salt$password16', '+91', 'config16', 'tuya16'),
+('user-17', 'Quinn', 'salt$password17', '+91', 'config17', 'tuya17'),
+('user-18', 'Rose', 'salt$password18', '+91', 'config18', 'tuya18'),
+('user-19', 'Sam', 'salt$password19', '+91', 'config19', 'tuya19'),
+('user-20', 'Tina', 'salt$password20', '+91', 'config20', 'tuya20');
+
+-- Create more dummy data for Thing
+INSERT INTO Thing (id, serial_no, type, flash_mb, f_ver, f_lib_ver, model_id, user_config, m_config, activation_ts, idu_ver, odu_ver, f_upd_ver, idu_upd_ver, odu_upd_ver) VALUES
+('thing-11', 1011, 1, 16, 'v2.0', '0', 'model11', '{"thingImageUrl": "url11"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu11', 'odu11', 'f_upd_ver11', 'idu_upd_ver11', 'odu_upd_ver11'),
+('thing-12', 1012, 2, 32, 'v2.1', '1', 'model12', '{"thingImageUrl": "url12"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu12', 'odu12', 'f_upd_ver12', 'idu_upd_ver12', 'odu_upd_ver12'),
+('thing-13', 1013, 0, 64, 'v2.2', '2', 'model13', '{"thingImageUrl": "url13"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu13', 'odu13', 'f_upd_ver13', 'idu_upd_ver13', 'odu_upd_ver13'),
+('thing-14', 1014, 1, 16, 'v2.3', '0', 'model14', '{"thingImageUrl": "url14"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu14', 'odu14', 'f_upd_ver14', 'idu_upd_ver14', 'odu_upd_ver14'),
+('thing-15', 1015, 2, 32, 'v2.4', '1', 'model15', '{"thingImageUrl": "url15"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu15', 'odu15', 'f_upd_ver15', 'idu_upd_ver15', 'odu_upd_ver15'),
+('thing-16', 1016, 0, 64, 'v2.5', '2', 'model16', '{"thingImageUrl": "url16"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu16', 'odu16', 'f_upd_ver16', 'idu_upd_ver16', 'odu_upd_ver16'),
+('thing-17', 1017, 1, 16, 'v2.6', '0', 'model17', '{"thingImageUrl": "url17"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu17', 'odu17', 'f_upd_ver17', 'idu_upd_ver17', 'odu_upd_ver17'),
+('thing-18', 1018, 2, 32, 'v2.7', '1', 'model18', '{"thingImageUrl": "url18"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu18', 'odu18', 'f_upd_ver18', 'idu_upd_ver18', 'odu_upd_ver18'),
+('thing-19', 1019, 0, 64, 'v2.8', '2', 'model19', '{"thingImageUrl": "url19"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu19', 'odu19', 'f_upd_ver19', 'idu_upd_ver19', 'odu_upd_ver19'),
+('thing-20', 1020, 1, 16, 'v2.9', '0', 'model20', '{"thingImageUrl": "url20"}', '{"ps": 300}', CURRENT_TIMESTAMP, 'idu20', 'odu20', 'f_upd_ver20', 'idu_upd_ver20', 'odu_upd_ver20');
+
+-- Create more dummy data for ThingState
+INSERT INTO ThingState (thing_id, conn_state, conn_ts, state, state_ts) VALUES
+('thing-11', '{"connected": true}', CURRENT_TIMESTAMP, '{"status": "active"}', CURRENT_TIMESTAMP),
+('thing-12', '{"connected": false}', CURRENT_TIMESTAMP, '{"status": "inactive"}', CURRENT_TIMESTAMP),
+('thing-13', '{"connected": true}', CURRENT_TIMESTAMP, '{"status": "active"}', CURRENT_TIMESTAMP),
+('thing-14', '{"connected": false}', CURRENT_TIMESTAMP, '{"status": "inactive"}', CURRENT_TIMESTAMP),
+('thing-15', '{"connected": true}', CURRENT_TIMESTAMP, '{"status": "active"}', CURRENT_TIMESTAMP),
+('thing-16', '{"connected": false}', CURRENT_TIMESTAMP, '{"status": "inactive"}', CURRENT_TIMESTAMP),
+('thing-17', '{"connected": true}', CURRENT_TIMESTAMP, '{"status": "active"}', CURRENT_TIMESTAMP),
+('thing-18', '{"connected": false}', CURRENT_TIMESTAMP, '{"status": "inactive"}', CURRENT_TIMESTAMP),
+('thing-19', '{"connected": true}', CURRENT_TIMESTAMP, '{"status": "active"}', CURRENT_TIMESTAMP),
+('thing-20', '{"connected": false}', CURRENT_TIMESTAMP, '{"status": "inactive"}', CURRENT_TIMESTAMP);
+
+-- Create more dummy data for ACModel
+INSERT INTO ACModel (id, product_id, remote_type)
+VALUES
+('acmodel-1', 'product1', 'remote1'),
+('acmodel-2', 'product2', 'remote2'),
+('acmodel-3', 'product3', 'remote3'),
+('acmodel-4', 'product4', 'remote4'),
+('acmodel-5', 'product5', 'remote5'),
+('acmodel-6', 'product6', 'remote6'),
+('acmodel-7', 'product7', 'remote7'),
+('acmodel-8', 'product8', 'remote8'),
+('acmodel-9', 'product9', 'remote9'),
+('acmodel-10', 'product10', 'remote10'),
+('acmodel-11', 'product11', 'remote11'),
+('acmodel-12', 'product12', 'remote12'),
+('acmodel-13', 'product13', 'remote13'),
+('acmodel-14', 'product14', 'remote14'),
+('acmodel-15', 'product15', 'remote15'),
+('acmodel-16', 'product16', 'remote16'),
+('acmodel-17', 'product17', 'remote17'),
+('acmodel-18', 'product18', 'remote18'),
+('acmodel-19', 'product19', 'remote19'),
+('acmodel-20', 'product20', 'remote20');
+
+
+-- Create more dummy data for UserThingMapping
+INSERT INTO UserThingMapping (thing_id, user_id, user_type, is_admin, installLocation) VALUES
+('thing-11', 'user-11', 1, true, POINT(20.0, 30.0)),
+('thing-12', 'user-12', 0, false, POINT(21.0, 31.0)),
+('thing-13', 'user-13', 1, true, POINT(22.0, 32.0)),
+('thing-14', 'user-14', 0, false, POINT(23.0, 33.0)),
+('thing-15', 'user-15', 1, true, POINT(24.0, 34.0)),
+('thing-16', 'user-16', 0, false, POINT(25.0, 35.0)),
+('thing-17', 'user-17', 1, true, POINT(26.0, 36.0)),
+('thing-18', 'user-18', 0, false, POINT(27.0, 37.0)),
+('thing-19', 'user-19', 1, true, POINT(28.0, 38.0)),
+('thing-20', 'user-20', 0, false, POINT(29.0, 39.0));
+
+-- Create more dummy data for AppUserAuth
+INSERT INTO AppUserAuth (auth_id, user_id, verified, verification_json) VALUES
+('phone-+911234567900', 'user-11', true, '{"method": "sms"}'),
+('phone-+911234567901', 'user-12', true, '{"method": "sms"}'),
+('phone-+911234567902', 'user-13', true, '{"method": "sms"}'),
+('phone-+911234567903', 'user-14', true, '{"method": "sms"}'),
+('phone-+911234567904', 'user-15', true, '{"method": "sms"}'),
+('phone-+911234567905', 'user-16', true, '{"method": "sms"}'),
+('phone-+911234567906', 'user-17', true, '{"method": "sms"}'),
+('phone-+911234567907', 'user-18', true, '{"method": "sms"}'),
+('phone-+911234567908', 'user-19', true, '{"method": "sms"}'),
+('phone-+911234567909', 'user-20', true, '{"method": "sms"}');
+

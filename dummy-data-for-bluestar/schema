@@ -1,0 +1,498 @@
+-- APPUSER RELATED TABLES
+
+CREATE TABLE IF NOT EXISTS AppUser(
+    id VARCHAR(50) PRIMARY KEY, -- uuid format
+    name VARCHAR(20) NOT NULL,
+    password VARCHAR(512), -- with salt (<salt$password>)
+    countryCode VARCHAR(3) NOT NULL DEFAULT '+91',
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    deleted BOOLEAN NOT NULL DEFAULT false,
+    config VARCHAR(10),
+    tuya_user_id VARCHAR(10)
+);
+
+
+CREATE TABLE IF NOT EXISTS AppUserAuth(
+    auth_id VARCHAR(50) PRIMARY KEY, -- format (phone -> phone-<country_code><number>, email-> email-<email>)
+    user_id VARCHAR(50) DEFAULT NULL, -- nullable
+    verified BOOLEAN NOT NULL DEFAULT false,
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    deleted BOOLEAN NOT NULL DEFAULT false,
+    verification_json JSON,
+
+    CONSTRAINT fk_AppUser FOREIGN KEY(user_id) REFERENCES AppUser(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS AppUserSession(
+    id VARCHAR(50) PRIMARY KEY, -- uuid format
+    user_id VARCHAR(50) NOT NULL,
+    app_info VARCHAR(100) NOT NULL,
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    deleted BOOLEAN NOT NULL DEFAULT false,
+
+    CONSTRAINT fk_AppUser FOREIGN KEY(user_id) REFERENCES AppUser(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS ACModel (
+    id VARCHAR(50) PRIMARY KEY, -- uuid format
+    product_id VARCHAR(100) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    star INT DEFAULT 3 NOT NULL,
+    capacity INT DEFAULT 15000 NOT NULL,
+    model_code VARCHAR(50)[] DEFAULT '{}' NOT NULL,
+
+    idu_fw_code VARCHAR(50),
+    idu_ee_code VARCHAR(50),
+    odu_fw_code VARCHAR(50),
+    odu_ee_code VARCHAR(50),
+
+    min_temp INT DEFAULT 16 NOT NULL,
+    max_temp INT DEFAULT 30 NOT NULL,
+    display_digit INT DEFAULT 2 NOT NULL,
+    displayunit BOOLEAN DEFAULT false NOT NULL,
+    remote_type VARCHAR(50) DEFAULT '' NOT NULL,
+    fix_and_lock JSON DEFAULT '{}'::JSONB NOT NULL,   -- {"1": 1.8} ({"backend_value": display_value})
+    wifi_support INT CONSTRAINT wifi_support_check CHECK(wifi_support IN (0,1)), -- 0 -> Ready, 1-> Inbuild
+    mode JSON DEFAULT '{}'::JSONB NOT NULL,
+    turbo JSON DEFAULT '{}'::JSONB NOT NULL,
+    fspd JSON DEFAULT '{}'::JSONB NOT NULL,
+    duo BOOLEAN DEFAULT false NOT NULL,
+
+    vswing JSON DEFAULT '{}'::JSONB NOT NULL,
+    hswing JSON DEFAULT '{}'::JSONB NOT NULL,
+
+    air_quality BOOLEAN DEFAULT false NOT NULL,
+    display BOOLEAN DEFAULT false NOT NULL,
+    scheduler VARCHAR(20)[] DEFAULT '{}' NOT NULL,
+    sleep BOOLEAN DEFAULT True NOT NULL,
+    custom_sleep BOOLEAN DEFAULT false NOT NULL,
+
+    on_lock JSON DEFAULT '{}'::JSONB NOT NULL,
+    off_lock JSON DEFAULT '{}'::JSONB NOT NULL,
+    stemp_lock JSON DEFAULT '{}'::JSONB NOT NULL,
+    mode_lock JSON DEFAULT '{}'::JSONB NOT NULL,
+    fspd_lock JSON DEFAULT '{}'::JSONB NOT NULL,
+    rttl JSON DEFAULT '{}'::JSONB NOT NULL,
+    rtul JSON DEFAULT '{}'::JSONB NOT NULL,
+
+    climate JSON DEFAULT '{}'::JSONB NOT NULL,
+    budget BOOLEAN DEFAULT false NOT NULL,
+    trend BOOLEAN DEFAULT True NOT NULL,
+
+    irest JSON DEFAULT '{}'::JSONB NOT NULL,
+    health JSON DEFAULT '{}'::JSONB NOT NULL,
+    esave JSON DEFAULT '{}'::JSONB NOT NULL,
+    ifeel JSON DEFAULT '{}'::JSONB NOT NULL,
+    eco JSON DEFAULT '{}'::JSONB NOT NULL,
+
+    high_cap BOOLEAN DEFAULT True NOT NULL,
+    critical_error JSON DEFAULT '{}'::JSONB NOT NULL,
+    non_critical_error JSON DEFAULT '{}'::JSONB NOT NULL,
+    raise_ticket BOOLEAN DEFAULT false NOT NULL,
+    raise_ticket_on INT CONSTRAINT raise_ticket_check_on CHECK(raise_ticket_on IN (0,1)), -- 0 -> on critical, 1 -> On non-critical
+    make INTEGER DEFAULT 1 NOT NULL,
+    exv BOOLEAN DEFAULT false NOT NULL,
+    valve4 BOOLEAN DEFAULT false NOT NULL,
+    m_buz JSON DEFAULT '{}'::JSONB NOT NULL,
+    bluscore BOOLEAN DEFAULT false NOT NULL,
+
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- MANAGEMENT USER RELATED TABLES
+
+CREATE TABLE IF NOT EXISTS EnterpriseUser (
+    user_id VARCHAR(100) PRIMARY KEY, -- user_id return by AWS Cognito
+    added_by VARCHAR(50) NOT NULL,
+    blocked BOOLEAN NOT NULL DEFAULT false,
+    is_admin BOOLEAN NOT NULL DEFAULT false,
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE IF NOT EXISTS UserRole(
+    id SERIAL PRIMARY KEY,
+    role VARCHAR(100) NOT NULL, -- role name
+    description VARCHAR(100)
+);
+
+
+CREATE TABLE IF NOT EXISTS UserRoleMapping(
+    user_id VARCHAR(50) NOT NULL,
+    role_id INT NOT NULL,
+
+    CONSTRAINT fk_EnterpriseUser FOREIGN KEY(user_id) REFERENCES EnterpriseUser(user_id) ON DELETE CASCADE,
+    CONSTRAINT fk_UserRole FOREIGN KEY(role_id) REFERENCES UserRole(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS ProductionBatch(
+    id VARCHAR(16) PRIMARY KEY, 
+    model_id VARCHAR(50) NOT NULL,
+    cert_id VARCHAR(50) NOT NULL, -- aws IoT cert id for batch (new one for every batch)
+    fid VARCHAR(255) NOT NULL, -- file name of firmware modal for the batch
+    max_device_count INT,
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE IF NOT EXISTS ProductionSession(
+    id VARCHAR(50) PRIMARY KEY, --- uuid format
+    batch_id VARCHAR(50) NOT NULL,
+    user_id VARCHAR(50) NOT NULL,
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_ProductionBatch FOREIGN KEY (batch_id) REFERENCES ProductionBatch(id) ON DELETE CASCADE,
+    CONSTRAINT fk_EnterpriseUser FOREIGN KEY (user_id) REFERENCES EnterpriseUser(user_id) ON DELETE CASCADE
+);
+
+
+-- THING RELATED TABLES
+
+CREATE TABLE IF NOT EXISTS Thing (  
+    id VARCHAR(20) PRIMARY KEY,  -- device mac address
+    serial_no INT NOT NULL,
+    type INT NOT NULL,
+    flash_mb INT NOT NULL,
+    f_ver VARCHAR(20) NOT NULL,
+    f_lib_ver VARCHAR(5) NOT NULL DEFAULT '0', -- base library version used by firmware
+    model_id VARCHAR(50) NOT NULL,
+    user_config JSONB DEFAULT '{}'::JSONB, -- {"thingImageUrl": ""} (user preferences related configuration)
+    m_config JSON DEFAULT '{"ps": 300}'::JSONB, -- internal operation preferences related configuration
+    activation_ts TIMESTAMP WITH TIME ZONE,
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    deleted BOOLEAN NOT NULL DEFAULT false,
+    idu_ver VARCHAR(20) NOT NULL,
+    odu_ver VARCHAR(20) NOT NULL,
+    f_upd_ver VARCHAR(20),
+    idu_upd_ver VARCHAR(20),
+    odu_upd_ver VARCHAR(20)
+);
+
+CREATE TABLE IF NOT EXISTS FulFilledByVa (
+    id VARCHAR(50) PRIMARY KEY,
+    alexa_ts TIMESTAMP WITH TIME ZONE,
+    goog_ts TIMESTAMP WITH TIME ZONE
+);
+
+CREATE TABLE IF NOT EXISTS ThingProvisionInfo (
+    thing_id VARCHAR(20) NOT NULL,
+    batch_id VARCHAR(50) NOT NULL,
+    lqc BOOLEAN NOT NULL DEFAULT false,
+    lqcts TIMESTAMP WITH TIME ZONE,
+
+    PRIMARY KEY(thing_id),
+
+    CONSTRAINT fk_Thing FOREIGN KEY(thing_id) REFERENCES Thing(id) ON DELETE CASCADE,
+    CONSTRAINT fk_ProductionBatch FOREIGN KEY(batch_id) REFERENCES ProductionBatch(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS ThingState(
+    thing_id VARCHAR(20) NOT NULL,
+    conn_state JSON DEFAULT '{}'::JSONB,
+    conn_ts TIMESTAMP WITH TIME ZONE,
+    state JSON DEFAULT '{}'::JSONB,
+    state_ts TIMESTAMP WITH TIME ZONE,
+
+    PRIMARY KEY(thing_id),
+    CONSTRAINT fk_Thing FOREIGN KEY(thing_id) REFERENCES Thing(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS UserThingMapping(
+    thing_id VARCHAR(20) NOT NULL,
+    user_id VARCHAR(50) NOT NULL,
+    user_type INT NOT NULL CONSTRAINT user_type_check CHECK(user_type IN (0,1)), -- 1 -> primary user, 0-> secondary_user
+    is_admin BOOLEAN DEFAULT false, -- admin access or normal access
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    deleted BOOLEAN DEFAULT false,
+    installLocation POINT, -- (lat,lon) captured at the time of onboarding
+
+    PRIMARY KEY(thing_id, user_id),
+
+    CONSTRAINT fk_Thing FOREIGN KEY (thing_id) REFERENCES Thing(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS UserThingGroup(
+    id VARCHAR(50) PRIMARY KEY, -- uuid format,
+    user_id VARCHAR(50),
+    name VARCHAR(20) NOT NULL,
+    things VARCHAR(20)[],
+    model_id VARCHAR(50) NOT NULL,
+    master_device VARCHAR(20) NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    type INT,  -- type of thing in the group
+
+    CONSTRAINT fk_AppUser FOREIGN KEY (user_id) REFERENCES AppUser(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS GroupState(
+    group_id VARCHAR(50) PRIMARY KEY,
+    state JSON DEFAULT '{}'::JSONB,
+    state_ts TIMESTAMP WITH TIME ZONE,
+
+    CONSTRAINT fk_UserThingGroup FOREIGN KEY (group_id) REFERENCES UserThingGroup(id) ON DELETE CASCADE
+);
+
+
+-- SERVICE REQUEST RELATED TABLES
+
+CREATE TABLE IF NOT EXISTS SmartServiceUserMap(
+    id VARCHAR(50) PRIMARY KEY, -- uuid format
+    auth_id VARCHAR(50) NOT NULL UNIQUE,
+    auth_key VARCHAR(100) NOT NULL,
+    customer_id VARCHAR(100)
+);
+
+CREATE TABLE IF NOT EXISTS SmartServiceTicketMap(
+    customer_id VARCHAR(100) NOT NULL,
+    ticket_number VARCHAR(100) NOT NULL,
+    address_id VARCHAR(50) NOT NULL,
+
+    PRIMARY KEY (customer_id, ticket_number)
+);
+
+
+CREATE TABLE IF NOT EXISTS SmartServiceUserAddress(
+    id VARCHAR(50) PRIMARY KEY, ---uuid format
+    auth_id VARCHAR(50) NOT NULL,
+    address1 VARCHAR(50) NOT NULL,
+    address2 VARCHAR(50) NOT NULL,
+    pincode VARCHAR(10) NOT NULL,
+    locality VARCHAR(50) NOT NULL,
+    state VARCHAR(2) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    type INT NOT NULL,
+    is_default BOOLEAN DEFAULT false
+);
+
+
+-- SCHEDULE RELATED TABLES
+
+CREATE TABLE IF NOT EXISTS MDSchedule(
+    id VARCHAR(50) PRIMARY KEY, -- uuid format
+    thing_id VARCHAR(50) NOT NULL,
+    type INT NOT NULL CONSTRAINT type_check CHECK(type IN (0, 1, 2, 3)),-- type of schedule (0 -> Thing Schedule, 1 -> Budget, 2 -> Customize Sleep, 3 -> I-Rest )
+    config JSON DEFAULT '{}'::JSONB, 
+    enabled BOOLEAN DEFAULT true,
+    repeat_on_days INT [],
+
+    CONSTRAINT fk_Thing FOREIGN KEY (thing_id) REFERENCES Thing(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS ScheduleAppData(
+    id SERIAL PRIMARY KEY ,
+    actions JSONB NOT NULL,
+    end_time INT NOT NULL, -- <hhmm> IST format
+    md_id VARCHAR(50),
+
+    CONSTRAINT fk_MDSchedule FOREIGN KEY (md_id) REFERENCES MDSchedule(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Schedule(
+    id SERIAL PRIMARY KEY ,
+    actions JSONB NOT NULL,
+    end_time INT NOT NULL, -- <hhmm> IST format
+    md_id VARCHAR(50),
+
+    CONSTRAINT fk_MDSchedule FOREIGN KEY (md_id) REFERENCES MDSchedule(id) ON DELETE CASCADE
+);
+
+
+-- Thing OTA
+
+CREATE TABLE IF NOT EXISTS UploadedFirmwareInfo(
+    id VARCHAR(50) NOT NULL,
+    model_id VARCHAR(50),
+    module VARCHAR(50),
+    type INT NOT NULL,
+    version VARCHAR(10) NOT NULL,
+    release_notes VARCHAR(100) NOT NULL,
+    engineering_notes VARCHAR(250) NOT NULL,
+    product_category INT NOT NULL,
+    uploaded BOOLEAN NOT NULL DEFAULT false,
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE UploadedFirmwareInfo ADD f_group_tag VARCHAR(50) DEFAULT '' NOT NULL;
+
+CREATE TABLE IF NOT EXISTS SmartAssistantAuth(
+    id VARCHAR(50) PRIMARY KEY,
+    user_id VARCHAR(50) NOT NULL,
+    assistant_type VARCHAR(20) NOT NULL CHECK (assistant_type IN ('alexa', 'goog')),
+    access_token VARCHAR(255),
+    oauth_tokens JSON DEFAULT '{}'::JSONB NOT NULL,
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated TIMESTAMP WITH TIME ZONE,
+    deleted BOOLEAN NOT NULL DEFAULT false,
+
+    CONSTRAINT fk_AppUser FOREIGN KEY(user_id) REFERENCES AppUser(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS UnregisteredUser(
+    id VARCHAR(50) PRIMARY KEY,
+    auth_id VARCHAR(50) UNIQUE NOT NULL,
+    name VARCHAR(20)
+);
+
+
+CREATE TABLE IF NOT EXISTS Notification(
+    id VARCHAR(50) PRIMARY KEY,
+    thing_id VARCHAR(50),
+    data JSONB NOT NULL DEFAULT '{}'::JSONB,
+    type INT NOT NULL,
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS UserNotificationMap(
+    id VARCHAR(50) PRIMARY KEY,
+    user_id VARCHAR(50),
+    created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    notification_id VARCHAR(50) NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS Task(
+    id VARCHAR(255) NOT NULL PRIMARY KEY,
+    last_run_ts TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE IF NOT EXISTS TuyaThingUserMapping(
+    user_id VARCHAR(100) NOT NULL,
+    thing_id VARCHAR(100) NOT NULL,
+    user_type INTEGER NOT NULL,
+    is_admin BOOLEAN DEFAULT false,
+    model_id VARCHAR(100) NOT NULL,
+    config JSONB DEFAULT '{}' NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS TuyaDeviceMDSchedule(
+    id VARCHAR(50) PRIMARY KEY,
+    thing_id VARCHAR(100) NOT NULL,
+    type INT NOT NULL CONSTRAINT type_check CHECK(type IN (0, 1, 2, 3)),-- type of schedule (0 -> Thing Schedule, 1 -> Budget, 2 -> Customize Sleep, 3 -> I-Rest )
+    config JSON DEFAULT '{}'::JSONB,
+    enabled BOOLEAN DEFAULT true,
+    repeat_on_days INT []
+);
+
+CREATE TABLE IF NOT EXISTS TuyaDeviceScheduleAppData(
+    id SERIAL PRIMARY KEY ,
+    actions JSONB NOT NULL,
+    end_time INT NOT NULL,
+    md_id VARCHAR(50),
+
+    CONSTRAINT fk_TuyaDeviceMDSchedule FOREIGN KEY (md_id) REFERENCES TuyaDeviceMDSchedule(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS TuyaDeviceSchedule(
+    id SERIAL PRIMARY KEY ,
+    actions JSONB NOT NULL,
+    end_time INT NOT NULL,
+    md_id VARCHAR(50),
+
+    CONSTRAINT fk_TuyaDeviceMDSchedule FOREIGN KEY (md_id) REFERENCES TuyaDeviceMDSchedule(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS DailyThingBudgetAggregation(
+    thing_id TEXT NOT NULL,
+    day DATE NOT NULL,
+    running_hour FLOAT NOT NULL,
+    running_kwh FLOAT NOT NULL,
+    cut_off_limit_hour INT NOT NULL,
+    cut_off_limit_kwh INT NOT NULL,
+    last_update_ts INT NOT NULL,
+    budget_id VARCHAR(50) NOT NULL,
+
+    UNIQUE(thing_id, day, budget_id)
+);
+
+CREATE TABLE IF NOT EXISTS MonthlyThingBudgetAggregation(
+    thing_id TEXT NOT NULL,
+    day DATE NOT NULL,
+    running_hour FLOAT NOT NULL,
+    running_kwh FLOAT NOT NULL,
+    cut_off_limit_hour INT NOT NULL,
+    cut_off_limit_kwh INT NOT NULL,
+    last_update_ts INT NOT NULL,
+    budget_id VARCHAR(50) NOT NULL,
+
+    UNIQUE(thing_id, day, budget_id)
+);
+
+
+----------------------Indexes--------------
+
+CREATE INDEX IF NOT EXISTS idx_ts_thing_id ON ThingState USING HASH(thing_id);
+CREATE INDEX IF NOT EXISTS idx_utm_thing_id ON UserThingMapping USING HASH(thing_id);
+CREATE INDEX IF NOT EXISTS idx_utm_user_id ON UserThingMapping USING HASH(user_id);
+CREATE INDEX IF NOT EXISTS idx_utm_user_type ON UserThingMapping USING BTREE(user_type);
+CREATE INDEX IF NOT EXISTS idx_thing_model_id ON Thing USING BTREE(model_id);
+
+
+
+
+
+select commands
+SELECT * FROM thingstate;
+select * FROM acmodel;
+select * FROM userthingmapping;
+select * FROM appuser;
+select * FROM thing;
+
+
+Select Thing.created, Thing.activation_ts, Thing.id, Thing.type, userthingmapping.user_type,
+        Thing.f_ver, Thing.model_id, (ThingState.conn_state ->> 'connected')::boolean AS connected,
+        ThingState.conn_ts, Thingstate.state_ts, ACModel.product_id, ACModel.remote_type, 
+        AppUser.name AS customer_name
+        FROM Thing
+        LEFT JOIN ThingState ON Thing.id = ThingState.thing_id
+        LEFT JOIN ACModel ON Thing.model_id = ACModel.id
+        LEFT JOIN UserThingMapping ON Thing.id = UserThingMapping.thing_id
+        LEFT JOIN AppUser ON UserThingMapping.user_id = AppUser.id
+        WHERE (UserThingMapping.user_type IS NULL OR UserThingMapping.user_type = 1)
+        AND thing.type = 1
+        AND Thing.activation_ts IS NOT NULL
+	AND Thing.created <= '2024-07-12 13:06:23.860511'
+        AND Thing.serial_no < 123399999
+        ORDER BY Thing.created DESC, Thing.serial_no DESC LIMIT 5;
+        
+        
+WITH PaginatedAppUser AS (
+            SELECT id, name, countrycode, created, deleted, config, tuya_user_id
+            FROM AppUser
+            JOIN UserThingMapping ON AppUser.id = UserThingMapping.user_id
+            JOIN Thing ON UserThingMapping.thing_id = Thing.id
+            WHERE Thing.type = 1
+            ORDER BY created DESC, id DESC LIMIT 5)
+            SELECT PaginatedAppUser.id, PaginatedAppUser.name, PaginatedAppUser.countrycode, PaginatedAppUser.created,
+            PaginatedAppUser.deleted, PaginatedAppUser.config, PaginatedAppUser.tuya_user_id,
+            AppUserAuth.auth_id as auth_id, AppUserAuth.verified as verified FROM PaginatedAppUser
+            INNER JOIN AppUserAuth ON AppUserAuth.user_id = PaginatedAppUser.id
+            "ORDER BY PaginatedAppUser.created DESC, PaginatedAppUser.id DESC;"
+            
+WITH PaginatedAppUser AS (
+            SELECT appuser.id, name, appuser.countrycode, appuser.created, appuser.deleted
+            FROM AppUser
+    
+            JOIN UserThingMapping ON AppUser.id = UserThingMapping.user_id
+            JOIN Thing ON UserThingMapping.thing_id = Thing.id
+            WHERE Thing.type = 
+        
+ 
+            ORDER BY created DESC, id DESC LIMIT 20
+        )
+        
+        SELECT PaginatedAppUser.id, PaginatedAppUser.name, PaginatedAppUser.countrycode, PaginatedAppUser.created,
+        PaginatedAppUser.deleted, 
+        AppUserAuth.auth_id as auth_id, AppUserAuth.verified as verified FROM PaginatedAppUser
+        INNER JOIN AppUserAuth ON AppUserAuth.user_id = PaginatedAppUser.id 
+    ORDER BY PaginatedAppUser.created DESC, PaginatedAppUser.id DESC;
