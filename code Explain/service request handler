@@ -1,0 +1,112 @@
+Certainly! Here's a simplified explanation of each route and its corresponding handler in the REQUEST_ROUTE_HANDLER_MAP. This mapping defines how different HTTP requests to specific URLs should be handled by your application.
+
+Explanation and Examples of Each Handler
+/service/requestOtp:
+
+Method: POST
+Handler: _get_service_request_otp_handler
+Usage: When a client sends a POST request to /service/requestOtp, the _get_service_request_otp_handler function is called to handle the request. This is typically used to request a one-time password (OTP).
+Example:
+json
+Copy code
+POST /service/requestOtp
+{
+  "phone_number": "1234567890"
+}
+The server responds by sending an OTP to the provided phone number.
+/service/verifyOtp:
+
+Method: POST
+Handler: _verify_smart_service_otp_request_handler
+Usage: When a client sends a POST request to /service/verifyOtp, the _verify_smart_service_otp_request_handler function is called to handle the request. This is typically used to verify an OTP.
+Example:
+json
+Copy code
+POST /service/verifyOtp
+{
+  "otp": "123456",
+  "phone_number": "1234567890"
+}
+The server responds with a success or failure message based on the OTP verification.
+/service/problems:
+
+Method: GET
+Handler: _get_ac_service_problems_handler
+Usage: When a client sends a GET request to /service/problems, the _get_ac_service_problems_handler function is called to handle the request. This is typically used to retrieve a list of common AC service problems.
+Example:
+json
+Copy code
+GET /service/problems
+The server responds with a list of common service problems.
+/service/address:
+
+Method: GET and POST
+Handlers:
+GET: _get_user_address_handler
+POST: _add_user_address_handler
+Usage:
+GET: When a client sends a GET request to /service/address, the _get_user_address_handler function retrieves the user's saved addresses.
+POST: When a client sends a POST request to /service/address, the _add_user_address_handler function adds a new address for the user.
+Examples:
+json
+Copy code
+GET /service/address
+The server responds with the user's saved addresses.
+json
+Copy code
+POST /service/address
+{
+  "address": "123 Main St, Anytown, USA"
+}
+The server responds by saving the new address.
+/service/tickets:
+
+Method: GET and POST
+Handlers:
+GET: _get_service_ticket_status_handler
+POST: _raise_service_tickets_handler
+Usage:
+GET: When a client sends a GET request to /service/tickets, the _get_service_ticket_status_handler function retrieves the status of the user's service tickets.
+POST: When a client sends a POST request to /service/tickets, the _raise_service_tickets_handler function raises a new service ticket.
+Examples:
+json
+Copy code
+GET /service/tickets
+The server responds with the status of the user's service tickets.
+json
+Copy code
+POST /service/tickets
+{
+  "issue": "AC not cooling",
+  "address": "123 Main St, Anytown, USA"
+}
+The server responds by creating a new service ticket.
+/service/tickets/{ticket_number}:
+
+Method: POST
+Handler: _cancel_smart_service_ticket_handler
+Usage: When a client sends a POST request to /service/tickets/{ticket_number}, the _cancel_smart_service_ticket_handler function is called to handle the request. This is typically used to cancel a specific service ticket.
+Example:
+json
+Copy code
+POST /service/tickets/12345
+{
+  "reason": "Issue resolved"
+}
+The server responds by canceling the service ticket with the number 12345.
+/service/autoCallLog:
+
+Method: POST
+Handler: _update_user_config_handler
+Usage: When a client sends a POST request to /service/autoCallLog, the _update_user_config_handler function is called to handle the request. This is typically used to update user configuration settings.
+Example:
+json
+Copy code
+POST /service/autoCallLog
+{
+  "setting": "auto_call_log",
+  "enabled": true
+}
+The server responds by updating the user configuration to enable the auto call log setting.
+Summary
+Each route in REQUEST_ROUTE_HANDLER_MAP specifies a URL path and the corresponding HTTP methods (GET or POST) along with the handler functions that process the requests. These handlers perform various actions like requesting and verifying OTPs, retrieving and adding addresses, raising and canceling service tickets, and updating user settings.
